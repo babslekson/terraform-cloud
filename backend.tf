@@ -41,3 +41,12 @@ terraform {
   }
 }
 
+terraform {
+  backend "remote" {
+    organization = "pisitis"
+
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
+}
