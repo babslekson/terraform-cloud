@@ -28,12 +28,19 @@ variable "name" {
 }
 
 variable "keypair" {
+   type = string
 }
 variable "ami" {}
 
-variable "master_username" {}
-variable "master_password" {}
-variable "account_no" {}
+variable "master_username" {
+  type = string
+}
+variable "master_password" {
+ type = string
+}
+variable "account_no" {
+   type = string
+}
 
 variable "images" {
   type = map(string)
