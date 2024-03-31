@@ -14,9 +14,12 @@ tags = {
   Managed-By  = "terraform"
 }
 
-
 keypair         = "keypair"
+
 ami             = "ami-0c7217cdde317cfec"
+
 master_username = "olalekan"
+
 master_password = "lekan12345"
+
 account_no      = "471112558029"

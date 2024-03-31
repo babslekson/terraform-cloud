@@ -30,7 +30,9 @@ variable "name" {
 variable "keypair" {
    type = string
 }
-variable "ami" {}
+variable "ami" {
+  type = string
+}
 
 variable "master_username" {
   type = string
