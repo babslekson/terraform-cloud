@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "terraform_state" {
+/* resource "aws_s3_bucket" "terraform_state" {
   bucket = "olalekan-dev-terraform"
 }
 resource "aws_s3_bucket_versioning" "terraform_state" {
@@ -16,11 +16,11 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
       sse_algorithm = "AES256"
     }
   }
-}
+} */
 
 
 # Dynamo DB resource for locking and consistency checking:
-resource "aws_dynamodb_table" "terraform_locks" {
+/* resource "aws_dynamodb_table" "terraform_locks" {
   name         = "terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
@@ -29,9 +29,9 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
-
+ */
 # Configure S3 Backend
-terraform {
+/* terraform {
   backend "s3" {
     bucket         = "olalekan-dev-terraform"
     key            = "global/s3/terraform.tfstate"
@@ -40,5 +40,14 @@ terraform {
     encrypt        = true
   }
 }
+ */
 
+terraform {
+  backend "remote" {
+    organization = "lekan-devops"
 
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
+}
