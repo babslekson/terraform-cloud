@@ -26,4 +26,3 @@ master_username = "olalekan"
 master_password = "lekan12345"
 
 account_no      = "471112558029"
-keypair         = "keypair"
