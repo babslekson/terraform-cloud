@@ -30,8 +30,20 @@ variable "name" {
 variable "keypair" {
    type = string
 }
-variable "ami" {
+variable "ami-bastion" {
   type = string
+}
+variable "ami-web" {
+  type = string
+}
+
+variable "ami-nginx" {
+  type = string
+}
+
+variable "ami-sonar" {
+  type        = string
+  description = "AMI ID for the launch template"
 }
 
 variable "master_username" {
@@ -43,11 +55,6 @@ variable "master_password" {
 variable "account_no" {
    type = string
 }
-
-variable "images" {
-  type = map(string)
-  default = {
-    us-east-1 = "image-1234"
-    us-west-2 = "image-23834"
-  }
+variable " keypair" {
+  
 }

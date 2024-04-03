@@ -1,4 +1,4 @@
-# security group for alb, to allow acess from any where on port 80 for http traffic
+# security group for alb, to allow access from any where on port 80 for http traffic
 resource "aws_security_group_rule" "inbound-alb-http" {
   from_port         = 80
   protocol          = "tcp"
@@ -27,6 +27,46 @@ resource "aws_security_group_rule" "inbound-ssh-bastion" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.olalekan["bastion-sg"].id
 }
+
+
+# security group for compute module
+resource "aws_security_group_rule" "inbound-bastion-ssh-compute" {
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+  type              = "ingress"
+  source_security_group_id = aws_security_group.olalekan["bastion-sg"].id
+  security_group_id = aws_security_group.olalekan["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-artifcatory" {
+  from_port         = 8081
+  protocol          = "tcp"
+  to_port           = 8081
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.olalekan["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-jenkins" {
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.olalekan["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-sonarqube" {
+  from_port         = 9000
+  protocol          = "tcp"
+  to_port           = 9000
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.olalekan["compute-sg"].id
+}
+
+
 
 
 # security group for nginx reverse proxy, to allow access only from the extaernal load balancer and bastion instance

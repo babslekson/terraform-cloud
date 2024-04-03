@@ -26,3 +26,7 @@ output "web-sg" {
 output "datalayer-sg" {
   value = aws_security_group.olalekan["datalayer-sg"].id
 }
+
+output "compute-sg" {
+  value = aws_security_group.olalekan["compute-sg"].id
+}

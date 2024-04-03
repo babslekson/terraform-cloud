@@ -46,7 +46,7 @@ resource "aws_autoscaling_group" "bastion" {
                     }
   tag {
     key                 = "Name"
-    value               = "bastion-launch-template"
+    value               = "ACS-bastion"
     propagate_at_launch = true
   }
 }
@@ -69,7 +69,7 @@ resource "aws_autoscaling_group" "reverseproxy" {
   }
   tag {
     key                 = "Name"
-    value               = "reverseproxy-launch-template"
+    value               = "ACS-nginx"
     propagate_at_launch = true
   }
 }
@@ -97,7 +97,7 @@ resource "aws_autoscaling_group" "tooling" {
   
   tag {
     key                 = "Name"
-    value               = "tooling-launch-template"
+    value               = "ACS-tooling"
     propagate_at_launch = true
   }
 }
@@ -127,7 +127,7 @@ resource "aws_autoscaling_group" "wordpress" {
   }
   tag {
     key                 = "Name"
-    value               = "wordpress-launch-template"
+    value               = "ACS-wordpress"
     propagate_at_launch = true
   }
 }

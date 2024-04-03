@@ -32,7 +32,7 @@ resource "aws_launch_template" "bastion-launch-template" {
     
   }
 
-  user_data = filebase64("${path.module}/bastion.sh")
+  # user_data = filebase64("${path.module}/bastion.sh")
 }
 
 
@@ -68,7 +68,7 @@ resource "aws_launch_template" "nginx-launch-template" {
   )
   }
 
-  user_data = filebase64("${path.module}/reverseproxy.sh")
+  # user_data = filebase64("${path.module}/reverseproxy.sh")
 }
 
 # launch template for wordpress
@@ -104,7 +104,7 @@ resource "aws_launch_template" "wordpress-launch-template" {
   )
   }
 
-  user_data = filebase64("${path.module}/wordpress.sh")
+  # user_data = filebase64("${path.module}/wordpress.sh")
 }
 
 
@@ -141,5 +141,5 @@ resource "aws_launch_template" "tooling-launch-template" {
   )
   }
 
-  user_data = filebase64("${path.module}/tooling.sh")
+  # user_data = filebase64("${path.module}/tooling.sh")
 }

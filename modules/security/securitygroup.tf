@@ -43,5 +43,11 @@ locals {
 
 
     }
+    # security group for compute layer
+
+     compute-sg = {
+      name        = "compute-sg"
+      description = "compute security group"
+    }
   }
 }
