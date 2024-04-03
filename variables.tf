@@ -55,6 +55,4 @@ variable "master_password" {
 variable "account_no" {
    type = string
 }
-variable "keypair" {
 
-}
