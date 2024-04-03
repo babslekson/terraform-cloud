@@ -1,3 +1,9 @@
+data "aws_s3_bucket" "terraform_state" {
+  bucket = "olalekan-dev-terraform"
+  }
+data "aws_dynamodb_table" "terraform_locks" {
+    name   = "terraform-locks"
+}
 
 # creating VPC
 module "VPC" {
