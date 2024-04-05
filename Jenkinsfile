@@ -13,6 +13,17 @@ pipeline {
                 }
             }
         }
+        stage('Lint Code') {
+            steps {
+                script {
+                    withCredentials([aws(credentialsId: 'AWS_CRED', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        echo "Validating Terraform configuration..."
+                        sh 'terraform validate -out=tfplan' 
+                        echo "Terraform code linting completed"
+                    }
+                }
+            }
+        }
 
         stage('Terraform Plan') {
             steps {
@@ -33,13 +44,13 @@ pipeline {
             }
             steps {
                 script {
-        //             // Ask for manual confirmation before applying changes
-                     input message: 'Do you want to apply changes?', ok: 'Yes'
+        //             // Automatic confirmation 
+                    
                      echo " Applying Terraform changes"
                     withCredentials([aws(credentialsId: 'AWS_CRED', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
 
                 
-                        sh 'terraform apply tfplan'
+                        sh 'terraform apply -auto-approve'
                     }
                 }
             }
