@@ -18,6 +18,7 @@ pipeline {
                 script {
                     withCredentials([aws(credentialsId: 'AWS_CRED', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         echo "Validating Terraform configuration..."
+                        sh 'terraform init'
                         sh 'terraform validate' 
                         echo "Terraform code linting completed"
                     }
