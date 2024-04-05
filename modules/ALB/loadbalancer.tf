@@ -32,19 +32,20 @@ resource "aws_lb_target_group" "nginx-tg" {
     } 
 }
 
+# Create a listener for the external load balancer
  # Route traffic from external load balancer to reverse proxy target group
 
-resource "aws_lb_listener" "elb-listener" {
-  load_balancer_arn = aws_lb.elb.arn
-  port              = "443"
-  protocol          = "HTTPS"
-  certificate_arn   = aws_acm_certificate.lekandevops.arn
+# resource "aws_lb_listener" "elb-listener" {
+#   load_balancer_arn = aws_lb.elb.arn
+#   port              = "443"
+#   protocol          = "HTTPS"
+#   certificate_arn   = aws_acm_certificate.lekandevops.arn
 
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.nginx-tg.arn
-  }
-}
+#   default_action {
+#     type             = "forward"
+#     target_group_arn = aws_lb_target_group.nginx-tg.arn
+#   }
+# }
 #Internal Load Balancers for webservers
 resource "aws_lb" "ilb" {
 
@@ -99,33 +100,33 @@ resource "aws_lb_target_group" "wordpress-tg" {
 # For this aspect a single listener was created for the wordpress which is default,
 # A rule was created to route traffic to tooling when the host header changes
 
-resource "aws_lb_listener" "web-listener" {
-  load_balancer_arn = aws_lb.ilb.arn
-  port              = "443"
-  protocol          = "HTTPS"
-  certificate_arn   = aws_acm_certificate.lekandevops.arn
+# resource "aws_lb_listener" "web-listener" {
+#   load_balancer_arn = aws_lb.ilb.arn
+#   port              = "443"
+#   protocol          = "HTTPS"
+#   certificate_arn   = aws_acm_certificate.lekandevops.arn
 
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.wordpress-tg.arn
-  }
-}
+#   default_action {
+#     type             = "forward"
+#     target_group_arn = aws_lb_target_group.wordpress-tg.arn
+#   }
+# }
 # listener rule for tooling target
-resource "aws_lb_listener_rule" "tooling-listener" {
-  listener_arn = aws_lb_listener.web-listener.arn
-  priority     = 99
+# resource "aws_lb_listener_rule" "tooling-listener" {
+#   listener_arn = aws_lb_listener.web-listener.arn
+#   priority     = 99
 
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.tooling-tg.arn
-  }
+#   action {
+#     type             = "forward"
+#     target_group_arn = aws_lb_target_group.tooling-tg.arn
+#   }
 
-  condition {
-    host_header {
-      values = ["tooling.lekandevops.site"]
-    }
-  }
-}
+#   condition {
+#     host_header {
+#       values = ["tooling.lekandevops.site"]
+#     }
+#   }
+# }
 
 
 

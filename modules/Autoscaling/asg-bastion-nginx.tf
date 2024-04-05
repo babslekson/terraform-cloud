@@ -74,10 +74,10 @@ resource "aws_autoscaling_group" "reverseproxy" {
   }
 }
 # attaching autoscaling group of nginx to external load balancer
-resource "aws_autoscaling_attachment" "asg_attachment_reverseproxy" {
- autoscaling_group_name = aws_autoscaling_group.reverseproxy.id
- lb_target_group_arn   = var.nginx-lb-tg
-}
+# resource "aws_autoscaling_attachment" "asg_attachment_reverseproxy" {
+#  autoscaling_group_name = aws_autoscaling_group.reverseproxy.id
+#  lb_target_group_arn   = var.nginx-lb-tg
+# }
 
 
 
@@ -101,11 +101,11 @@ resource "aws_autoscaling_group" "tooling" {
     propagate_at_launch = true
   }
 }
-# attaching autoscaling group of  tooling application to internal loadbalancer
-resource "aws_autoscaling_attachment" "asg_attachment_tooling" {
-  autoscaling_group_name = aws_autoscaling_group.tooling.id
-  lb_target_group_arn   = var.tooling-lb-tg
-}
+# # attaching autoscaling group of  tooling application to internal loadbalancer
+# resource "aws_autoscaling_attachment" "asg_attachment_tooling" {
+#   autoscaling_group_name = aws_autoscaling_group.tooling.id
+#   lb_target_group_arn   = var.tooling-lb-tg
+# }
 
 
 # autoscaling for wordpress
@@ -132,7 +132,7 @@ resource "aws_autoscaling_group" "wordpress" {
   }
 }
 # attaching autoscaling group of wordpress application to internal loadbalancer
-resource "aws_autoscaling_attachment" "asg_attachment_wordpress" {
-  autoscaling_group_name = aws_autoscaling_group.wordpress.id
-  lb_target_group_arn   = var.wordpress-lb-tg
-}
+# resource "aws_autoscaling_attachment" "asg_attachment_wordpress" {
+#   autoscaling_group_name = aws_autoscaling_group.wordpress.id
+#   lb_target_group_arn   = var.wordpress-lb-tg
+# }

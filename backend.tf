@@ -31,7 +31,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
 }
  */
 # Configure S3 Backend
-/* terraform {
+terraform {
   backend "s3" {
     bucket         = "olalekan-dev-terraform"
     key            = "global/s3/terraform.tfstate"
@@ -40,9 +40,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
     encrypt        = true
   }
 }
- */
-
-terraform {
+ 
+/* terraform {
   backend "remote" {
     organization = "lekan-devops"
 
@@ -50,4 +49,4 @@ terraform {
       name = "terraform-cloud"
     }
   }
-}
+} */
