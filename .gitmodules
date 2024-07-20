@@ -1,0 +1,3 @@
+[submodule "ansible-pbl19"]
+	path = ansible-pbl19
+	url = https://github.com/babslekson/ansible-pbl19
