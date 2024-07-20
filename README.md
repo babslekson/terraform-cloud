@@ -1,11 +1,11 @@
 # AUTOMATING AWS SOLUTION USING TERRAFORM | PACKER | ANSIBLE | TERRAFORM CLOUD
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/babslekson/Devops-pbl/main/AWS-Cloud%20-Solution-Using-Reverse-Proxy-Technology_P15/pbl15/architecture.png" alt="Project Architecture" width="60%"/>
+  <img src="https://raw.githubusercontent.com/babslekson/Devops-pbl/main/AWS-Cloud-Solution-Using-Reverse-Proxy-Technology_P15/pbl15/architecture.png" alt="Project Architecture" width="60%"/>
 </p>
 
 ### Folder Structure
-**terraform-cloud/**: Contains all the Terraform configuration files.
+The main repository contains all the Terraform configuration files.
 
 **ansible-pbl19/**: Contains Ansible playbooks and roles for server configuration.
 
