@@ -31,16 +31,16 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
 }
 */
 # Configure S3 Backend
-terraform {
-  backend "s3" {
-    bucket         = "olalekan-dev-terraform"
-    key            = "global/s3/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
-  }
-}
- */
+# terraform {
+#   backend "s3" {
+#     bucket         = "olalekan-dev-terraform"
+#     key            = "global/s3/terraform.tfstate"
+#     region         = "us-east-1"
+#     dynamodb_table = "terraform-locks"
+#     encrypt        = true
+#   }
+# }
+
 
 terraform {
   backend "remote" {
