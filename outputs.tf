@@ -8,4 +8,7 @@ output "dynamodb_table_name" {
   description = "The name of the DynamoDB table"
 }
 
- 
+output "rds-endpoint" {
+    value = [module.RDS.rds-endpoint]
+    description = "RDS endpoint"
+}
